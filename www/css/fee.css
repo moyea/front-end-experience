@@ -1,0 +1,302 @@
+@charset "UTF-8";
+html {
+  font-size: 100%; }
+
+html, body {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: normal;
+  background-color: #fff;
+  color: #333;
+  font-style: normal;
+  font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+/*
+@mixin transform($val){
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  -o-transform: $val;
+  transform: $val;
+}
+*/
+#gn-menustate {
+  display: none; }
+
+#gn-menustate:checked ~ .gn-globalnav,
+#gn-menustate:target ~ .gn-globalnav {
+  height: 100%;
+  background: #000;
+  -webkit-transition: background 0.35s linear, height 0.35s ease-in 200ms;
+  transition: background 0.35s linear, height 0.35s ease-in 200ms; }
+  #gn-menustate:checked ~ .gn-globalnav .gn-menuicon-bread-top,
+  #gn-menustate:target ~ .gn-globalnav .gn-menuicon-bread-top {
+    -webkit-transition: -webkit-transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  #gn-menustate:checked ~ .gn-globalnav .gn-menuicon-bread-bottom,
+  #gn-menustate:target ~ .gn-globalnav .gn-menuicon-bread-bottom {
+    -webkit-transition: -webkit-transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  #gn-menustate:checked ~ .gn-globalnav .gn-menuicon-bread-crust-top,
+  #gn-menustate:target ~ .gn-globalnav .gn-menuicon-bread-crust-top {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition-delay: 0deg;
+    transition-delay: 0deg; }
+  #gn-menustate:checked ~ .gn-globalnav .gn-menuicon-bread-crust-bottom,
+  #gn-menustate:target ~ .gn-globalnav .gn-menuicon-bread-crust-bottom {
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  #gn-menustate:checked ~ .gn-globalnav .gn-menuicon-label,
+  #gn-menustate:target ~ .gn-globalnav .gn-menuicon-label {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg); }
+
+.gn-globalnav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  margin: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 44px;
+  max-height: 44px;
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  .gn-globalnav .gn-header {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    overflow: hidden; }
+  .gn-globalnav .gn-menuicon-bread {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    -webkit-transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+  .gn-globalnav .gn-menuicon-bread-top {
+    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    z-index: 4; }
+  .gn-globalnav .gn-menuicon-bread-bottom {
+    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  .gn-globalnav .gn-menuicon-bread-crust {
+    display: block;
+    width: 17px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    left: 16px;
+    z-index: 1;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s; }
+  .gn-globalnav .gn-menuicon-bread-crust-top {
+    top: 23px;
+    -webkit-transition: -webkit-transform 0.2s 0.2s;
+    transition: transform 0.2s 0.2s;
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px); }
+  .gn-globalnav .gn-menuicon-bread-crust-bottom {
+    bottom: 23px;
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px); }
+  .gn-globalnav .gn-item {
+    display: inline-block;
+    position: relative;
+    height: 44px;
+    z-index: 1;
+    vertical-align: top; }
+  .gn-globalnav .gn-list {
+    cursor: default;
+    margin: 0 -10px;
+    text-align: justify;
+    width: auto;
+    height: 44px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines; }
+  .gn-globalnav .gn-link {
+    font-size: 16px;
+    line-height: 2.75;
+    font-weight: 400;
+    letter-spacing: normal;
+    opacity: 1;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=$ieopacity)';
+    filter: alpha(opacity=100);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0 10px;
+    height: 44px;
+    background: no-repeat;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    outline-offset: -7px;
+    -webkit-transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+  .gn-globalnav .gn-menuicon-label {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: 48px;
+    height: 44px;
+    cursor: pointer;
+    -webkit-transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-tap-highlight-color: transparent; }
+
+@media only screen and (max-width: 767px) {
+  #gn-menustate:checked ~ .gn-globalnav,
+  #gn-menustate:target ~ .gn-globalnav {
+    height: 100%;
+    background: #000;
+    -webkit-transition: background 0.35s linear, height 0.35s ease-in 200ms;
+    transition: background 0.35s linear, height 0.35s ease-in 200ms;
+    /*按钮打开时的动画*/ }
+    #gn-menustate:checked ~ .gn-globalnav .gn-list,
+    #gn-menustate:target ~ .gn-globalnav .gn-list {
+      visibility: visible;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu,
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu {
+      opacity: 1;
+      pointer-events: auto;
+      -webkit-transform: none;
+      transform: none; }
+      #gn-menustate:checked ~ .gn-globalnav .gn-item-menu .gn-link,
+      #gn-menustate:target ~ .gn-globalnav .gn-item-menu .gn-link {
+        background-position: left center;
+        display: block;
+        outline-offset: 0;
+        padding: 0;
+        width: auto;
+        max-width: none; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(1),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(1) {
+      -webkit-transition-delay: 100ms;
+      transition-delay: 100ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(2),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(2) {
+      -webkit-transition-delay: 150ms;
+      transition-delay: 150ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(3),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(3) {
+      -webkit-transition-delay: 200ms;
+      transition-delay: 200ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(4),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(4) {
+      -webkit-transition-delay: 250ms;
+      transition-delay: 250ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(5),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(5) {
+      -webkit-transition-delay: 300ms;
+      transition-delay: 300ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(6),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(6) {
+      -webkit-transition-delay: 350ms;
+      transition-delay: 350ms; }
+    #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(7),
+    #gn-menustate:target ~ .gn-globalnav .gn-item-menu:nth-child(7) {
+      -webkit-transition-delay: 400ms;
+      transition-delay: 400ms; }
+  .gn-globalnav {
+    max-height: none;
+    -webkit-transition: background 0.35s linear, height 0.35s ease-in;
+    transition: background 0.35s linear, height 0.35s ease-in;
+    /*按钮关闭时动画延迟*/ }
+    .gn-globalnav .gn-header {
+      display: block; }
+    .gn-globalnav .gn-list {
+      position: absolute;
+      z-index: 2;
+      top: 44px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 0 48px;
+      height: auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      visibility: hidden;
+      -webkit-transition: visibility 0s linear 1s;
+      transition: visibility 0s linear 1s; }
+    .gn-globalnav .gn-item {
+      width: 100%;
+      height: 48px; }
+    .gn-globalnav .gn-item-menu {
+      height: 47px;
+      border-bottom: 1px solid #333;
+      opacity: 0;
+      pointer-events: none;
+      -webkit-transform: scale(1.1) translateY(-24px);
+      transform: scale(1.1) translateY(-24px);
+      -webkit-transition: opacity 0.35s ease-out, -webkit-transform 0.35s ease-out;
+      transition: opacity 0.35s ease-out, -webkit-transform 0.35s ease-out; }
+    .gn-globalnav .gn-item-menu:nth-child(1) {
+      -webkit-transition-delay: 400ms;
+      transition-delay: 400ms; }
+    .gn-globalnav .gn-item-menu:nth-child(2) {
+      -webkit-transition-delay: 350ms;
+      transition-delay: 350ms; }
+    .gn-globalnav .gn-item-menu:nth-child(3) {
+      -webkit-transition-delay: 300ms;
+      transition-delay: 300ms; }
+    .gn-globalnav .gn-item-menu:nth-child(4) {
+      -webkit-transition-delay: 250ms;
+      transition-delay: 250ms; }
+    .gn-globalnav .gn-item-menu:nth-child(5) {
+      -webkit-transition-delay: 200ms;
+      transition-delay: 200ms; }
+    .gn-globalnav .gn-item-menu:nth-child(6) {
+      -webkit-transition-delay: 150ms;
+      transition-delay: 150ms; }
+    .gn-globalnav .gn-item-menu:nth-child(7) {
+      -webkit-transition-delay: 100ms;
+      transition-delay: 100ms; } }

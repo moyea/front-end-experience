@@ -1,0 +1,279 @@
+$child-number: 7;
+$transition-delay-start: 300;
+$transition-delay-step: 50;
+
+#gn-menustate {
+  display: none;
+}
+
+#gn-menustate:checked,
+#gn-menustate:target {
+  ~ .gn-globalnav {
+    height: 100%;
+    background: #000;
+    @include transition(background 0.35s linear, height 0.35s ease-in 200ms);
+
+    .gn-menuicon-bread-top {
+      -webkit-transition: -webkit-transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+      transition: transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+      @include transform(rotate(45deg));
+    }
+
+    .gn-menuicon-bread-bottom {
+      -webkit-transition: -webkit-transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+      transition: transform 0.25s 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+      @include transform(rotate(-45deg));
+    }
+
+    .gn-menuicon-bread-crust-top {
+      @include transform(translateY(0));
+      @include transition-delay(0deg);
+    }
+
+    .gn-menuicon-bread-crust-bottom {
+      -webkit-transition: -webkit-transform 0.2s;
+      transition: transform 0.2s;
+      @include transform(translateY(0));
+    }
+
+    .gn-menuicon-label {
+      @include transform(rotate(90deg));
+    }
+
+  }
+}
+
+.gn-globalnav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  margin: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 44px;
+  max-height: 44px;
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  @include user-select(none);
+
+  .gn-header {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    overflow: hidden;
+  }
+
+  .gn-menuicon-bread {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    @include transition(opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1));
+  }
+
+  .gn-menuicon-bread-top {
+    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    @include transform(rotate(0deg));
+    z-index: 4;
+  }
+
+  .gn-menuicon-bread-bottom {
+    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    @include transform(rotate(0deg));
+  }
+
+  .gn-menuicon-bread-crust {
+    display: block;
+    width: 17px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    left: 16px;
+    z-index: 1;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+  }
+
+  .gn-menuicon-bread-crust-top {
+    top: 23px;
+    -webkit-transition: -webkit-transform 0.2s 0.2s;
+    transition: transform 0.2s 0.2s;
+    @include transform(translateY(-3px));
+  }
+
+  .gn-menuicon-bread-crust-bottom {
+    bottom: 23px;
+    @include transform(translateY(3px));
+  }
+
+  .gn-item {
+    display: inline-block;
+    position: relative;
+    height: 44px;
+    z-index: 1;
+    vertical-align: top;
+  }
+
+  .gn-list {
+    cursor: default;
+    margin: 0 -10px;
+    text-align: justify;
+    width: auto;
+    height: 44px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+  }
+
+  .gn-link {
+    font-size: 16px;
+    line-height: 2.75;
+    font-weight: 400;
+    letter-spacing: normal;
+    opacity: 1;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=$ieopacity)';
+    filter: alpha(opacity=100);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0 10px;
+    height: 44px;
+    background: no-repeat;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    outline-offset: -7px;
+    @include transition(opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1));
+  }
+
+  .gn-menuicon-label {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: 48px;
+    height: 44px;
+    cursor: pointer;
+    -webkit-transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  $child-number: 7;
+  $transition-delay-start: 100;
+  $transition-delay-step: 50;
+
+  #gn-menustate:checked,
+  #gn-menustate:target {
+    ~ .gn-globalnav {
+      height: 100%;
+      background: #000;
+      @include transition(background 0.35s linear, height 0.35s ease-in 200ms);
+
+      .gn-list {
+        visibility: visible;
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+      }
+
+      .gn-item-menu {
+        opacity: 1;
+        pointer-events: auto;
+        -webkit-transform: none;
+        transform: none;
+
+        .gn-link {
+          background-position: left center;
+          display: block;
+          outline-offset: 0;
+          padding: 0;
+          width: auto;
+          max-width: none;
+        }
+      }
+
+      /*按钮打开时的动画*/
+      @for $i from 1 through $child-number {
+        @if ($i>1) {
+          .gn-item-menu:nth-child( #{$i} ) {
+            @include transition-delay($transition-delay-start + $transition-delay-step * ( $i - 1)+ms);
+          }
+        } @else {
+          .gn-item-menu:nth-child( #{$i} ) {
+            @include transition-delay($transition-delay-start +ms);
+          }
+        }
+
+      }
+    }
+
+  }
+  .gn-globalnav {
+    max-height: none;
+    @include transition(background 0.35s linear, height 0.35s ease-in);
+
+    .gn-header {
+      display: block;
+    }
+
+    .gn-list {
+      position: absolute;
+      z-index: 2;
+      top: 44px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 0 48px;
+      height: auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      visibility: hidden;
+      @include transition(visibility 0s linear 1s);
+    }
+
+    .gn-item {
+      width: 100%;
+      height: 48px;
+    }
+
+    .gn-item-menu {
+      height: 47px;
+      border-bottom: 1px solid #333;
+      opacity: 0;
+      pointer-events: none;
+      @include transform(scale(1.1) translateY(-24px));
+      @include transition(opacity 0.35s ease-out, -webkit-transform 0.35s ease-out);
+    }
+
+    /*按钮关闭时动画延迟*/
+    @for $i from 1 through $child-number {
+      .gn-item-menu:nth-child( #{$i} ) {
+        @include transition-delay($transition-delay-step * ($child-number - $i) + $transition-delay-start + ms);
+      }
+    }
+  }
+}
+
