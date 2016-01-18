@@ -129,7 +129,6 @@ $transition-delay-step: 50;
   .gn-list {
     cursor: default;
     margin: 0 -10px;
-    text-align: justify;
     width: auto;
     height: 44px;
     -webkit-user-select: none;
@@ -137,8 +136,8 @@ $transition-delay-step: 50;
     -ms-user-select: none;
     user-select: none;
     text-align: justify;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute-all-lines;
+    -ms-text-justify: distribute;
+    text-justify: distribute;
   }
 
   .gn-link {
@@ -177,7 +176,7 @@ $transition-delay-step: 50;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@include max-screen(767px){
 
   $child-number: 7;
   $transition-delay-start: 100;
@@ -206,7 +205,7 @@ $transition-delay-step: 50;
           background-position: left center;
           display: block;
           outline-offset: 0;
-          padding: 0;
+          //padding: 0;
           width: auto;
           max-width: none;
         }

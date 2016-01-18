@@ -145,7 +145,6 @@ ul {
   .gn-globalnav .gn-list {
     cursor: default;
     margin: 0 -10px;
-    text-align: justify;
     width: auto;
     height: 44px;
     -webkit-user-select: none;
@@ -153,8 +152,8 @@ ul {
     -ms-user-select: none;
     user-select: none;
     text-align: justify;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute-all-lines; }
+    -ms-text-justify: distribute;
+    text-justify: distribute; }
   .gn-globalnav .gn-link {
     font-size: 16px;
     line-height: 2.75;
@@ -212,7 +211,6 @@ ul {
         background-position: left center;
         display: block;
         outline-offset: 0;
-        padding: 0;
         width: auto;
         max-width: none; }
     #gn-menustate:checked ~ .gn-globalnav .gn-item-menu:nth-child(1),
@@ -300,3 +298,9 @@ ul {
     .gn-globalnav .gn-item-menu:nth-child(7) {
       -webkit-transition-delay: 100ms;
       transition-delay: 100ms; } }
+
+/*文字过长显示省略号*/
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
