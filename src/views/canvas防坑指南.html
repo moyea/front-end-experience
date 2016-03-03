@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas防坑指南</title>
+</head>
+<body>
+<h2>canvas绘图</h2>
+<p>使用drawImage()时,image是异步加载的,它会在自己后面的非异步代码执行完成后再开始执行,
+    因此,在调用drawImage时需要放到img.onload中去执行,否则就会导致canvas是空白的
+</p>
+</body>
+</html>

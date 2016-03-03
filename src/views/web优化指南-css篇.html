@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web前端优化指南-css篇</title>
+</head>
+<body>
+<div>
+    <h1>组织css的方式:</h1>
+    <p>组织css的方式多种多样,有多种角度来划分,例如按功能划分:将控制字体的放置在font.css文件里,
+        控制颜色的放置在color.css文件里,将控制布局的放在layout.css文件里;或者按区块划分:将头
+        部的放在head.css里,底部放在foot.css里,侧边栏放在sidebar.css里,主体放在main.css里.
+        不同的角度都有自己的优缺点</p>
+    <p>推荐的组织css的方法:base.css+common.css+page.css,将网站内的所有样式按照职能划分成三
+        大类:base,common,page.一般情况下,任何一网页的最终表现都是由这三者共同完成的,这三者并
+        不是并列结构,而是层叠结构</p>
+    <h2>1.base层</h2>
+    <p>base层是相对稳定的,基本上不需要维护的,例如css reset,与UI无关</p>
+    <h2>2.common层</h2>
+    <p>提供组件级的css类,可以大量复用的,common层是网站级的,不同的网站有不同的common层</p>
+    <h2>3.page层</h2>
+    <p>提供页面级的css类,未每个单独的页面提供样式</p>
+</div>
+<div>
+    <h1>css的权重:</h1>
+    <p>css选择符的权重,当不同选择符的样式设置有冲突时,会采用权重高的选择符设置样式</p>
+    <p>权重的规则:html标签的权重是1,class的权重是10,id的权重是100,例如 p 的权重是1,
+        "div p"的权重是1+1=2,"div.demo"的权重是10+1=11,"#test .red"的权重是100+10=110</p>
+    <h2>选择符权重相同</h2>
+    <p>当CSS选择符权重相同,样式会遵循就近原则,哪个选择符最后定义,就采用哪个选择符的样式<em>"就近原则"指的
+        是选择符定义的先后顺序,而不是标签中挂class名称的先后顺序,<pre>&lt;span class="test test1"&gt;&lt;/span&gt;</pre>和<pre>&lt;span class="test1 test">&lt;/span&gt;</pre>没有区别</em></p>
+    <p>注意:使用子选择器,会增加CSS选择符的权重,CSS的权重越高,样式越不易被覆盖,越容易对其他选择
+        符产生影响.为了保证样式容易被覆盖,提高可维护性,CSS选择符的权重尽可能低</p>
+</div>
+<div>
+    <h1>块级元素与行内元素的区别</h1>
+    <p>块级元素可以设置width,height属性,行内元素width,height属性无效</p>
+    <p>注意:块级元素即使设置了宽高,仍然是独占一行的</p>
+    <p>块级元素可以设置margin和padding属性,行内元素的水平margin(margin-left,margin-right),
+        padding(padding-left,padding-right)有效,竖直方向的margin无效,padding会增大行内元素
+        的面积,但不会和相邻的元素拉开距离</p>
+</div>
+<div>
+    <h1>relative,absolute和float</h1>
+    <p>relative和absolute都可以改变元素在文档流中的位置,设置relative和absolute都可以让元素激活
+        left,top,right,bottom和z-index属性(默认情况下,这些属性没有激活,设置了也无效)</p>
+    <p>默认情况下元素都是在z-index:0这一层,元素根据自己的display类型,长宽,内外边距等属性排列在
+        z-index:0这一层,这就是文档流,relative和absolute会让元素"浮"起来,也就是z-index值大于0.
+    不同的是relative会保留自己在z-index:0层的占位,left,top,right,bottom值是相对于自己在z-index:0
+        层的位置,虽然它的实际位置可能因为设置了left,top,right,bottom值而偏离原来在文档流中的位置,但
+        对其他仍然在z-index:0层的元素不会造成影响.而absolute会完全脱离文档流,不在z-index:0层保留占位符
+    其left,top,right,bottom是相对于自己最近一个设置了absolute或relative的祖先元素的,如果没有这样的祖先
+        元素,那么就相对于body元素</p>
+    <p>float也可以改变文档流,但是float属性的元素仍然在z-index:0层排列,float不能通过left,top,right,bottom
+        来控制元素的位置,只能通过flost:left和float:right来控制元素在同层中左浮或右浮,float会改变正常的文档流
+        排列,影响到周围元素</p>
+    <p>另外,absolute和float会隐式改变display类型,不论之前是什么类型的元素(display:none除外),只要设置了position:absolute或float
+    ,都会让元素以display:inline-block的方式显示可以设置长宽,默认宽度并不占满父元素,就算显示设置display:inline或者display:block也
+        仍然无效,relative不会隐式改变display的类型</p>
+    <h2>关于浮动</h2>
+    <p>设置负边距可以让相邻的元素产生重叠,谁浮在上面,取决于html标签出现的先后,后出现的标签浮于先出现的标签之上</p>
+</div>
+</body>
+</html>

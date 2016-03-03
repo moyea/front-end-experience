@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6中的class</title>
+</head>
+<body>
+<script type="text/javascript">
+    "use strict";
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        get getAge(){
+            return this.age;
+        }
+        speak(){
+            console.log('Person speak');
+        }
+        static sayHello(){
+            //静态方法,可以直接使用类名.方法名调用
+            console.log('hello');
+        }
+
+    }
+    Person.sayHello();
+
+    const p = new Person('Rose',16);
+    console.log(p.getAge());
+
+    class Men extends Person{
+        speak(){
+            super.speak();
+            console.log('Men speak');
+        }
+        takeAWife(women){
+            console.log(this.name+' taken a wife,named '+women.name)
+        }
+    }
+
+    const m1 = new Men('James');
+    console.log(m1.getAge());
+    m1.takeAWife(p);
+</script>
+</body>
+</html>

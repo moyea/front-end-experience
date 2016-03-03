@@ -16,6 +16,7 @@
     "react-dom": "latest",
     "through2": "latest",
     "gulp-notify": "latest",
-    "gulp-notify": "latest"
+    "gulp-notify": "latest",
+    "socket.io": "latest"
   }
 }
