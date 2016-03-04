@@ -2,9 +2,253 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>分隔线</title>
+    <style>
+        .letter-line{
+            letter-spacing: -2px;
+            color: #ddd;
+        }
+        .letter-line span{
+            letter-spacing: 0;
+            color: #222;
+            margin: 0 20px;
+        }
+
+        .tag-line{
+            padding: 0 20px;
+            margin: 20px 0;
+            line-height: 1px;
+            border-left:200px solid #ddd;
+            border-right:200px solid #ddd;
+            text-align: center;
+        }
+        .bgc-line{
+            height: 1px;
+            background-color: #ddd;
+            text-align: center;
+        }
+        .bgc-line span{
+            position: relative;
+            top: -8px;
+            padding: 0 20px;
+            background-color: #ddd;
+        }
+
+        .inline-block-line b{
+            width: 200px;
+            height: 1px;
+            background-color: #DDD;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .inline-block-line span{
+            display: inline-block;
+            vertical-align: middle;
+            padding:0 20px;
+        }
+
+        .arrow-up{
+            width: 0;
+            height: 0;
+            border-left:25px solid transparent;
+            border-right:25px solid transparent;
+            border-bottom:25px solid #0cf;
+            font-size: 0;
+            line-height: 0;
+        }
+        .arrow-left{
+            width: 0;
+            height: 0;
+            border-top:25px solid transparent;
+            border-right:25px solid #0cf;
+            border-bottom:25px solid transparent;
+            font-size: 0;
+            line-height: 0;
+        }
+        .arrow-right{
+            width: 0;
+            height: 0;
+            border-top:25px solid transparent;
+            border-left:25px solid #0cf;
+            border-bottom:25px solid transparent;
+            font-size: 0;
+            line-height: 0;
+        }
+        .arrow-down{
+            width: 0;
+            height: 0;
+            border-left:25px solid transparent;
+            border-right:25px solid transparent;
+            border-top:25px solid #0cf;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        h2[data-text] {
+            position: relative;
+        }
+        h2[data-text]::after {
+            content: attr(data-text);
+            z-index: 10;
+            color: #e3e3e3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,0)),
+            color-stop(50%,
+                    rgba(0,0,0,.8)), to(rgba(0,0,0,0)));
+        }
+
+        .disabled{
+            pointer-events: none;
+        }
+
+        .blur {
+            color: transparent;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+
+        .wrapper {
+            margin: 50px auto;
+            width: 280px;
+            height: 370px;
+            background: white;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            -moz-box-shadow:    0 0 8px rgba(0,0,0,0.3);
+            box-shadow:         0 0 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 90;
+        }
+
+        .ribbon-wrapper-green {
+            width: 85px;
+            height: 88px;
+            overflow: hidden;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+        }
+
+        .ribbon-green {
+            font: bold 15px Sans-Serif;
+            color: #333;
+            text-align: center;
+            text-shadow: rgba(255,255,255,0.5) 0 1px 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform:    rotate(45deg);
+            -ms-transform:     rotate(45deg);
+            -o-transform:      rotate(45deg);
+            position: relative;
+            padding: 7px 0;
+            left: -5px;
+            top: 15px;
+            width: 120px;
+            background-color: #BFDC7A;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+            background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+            color: #6a6340;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+            -moz-box-shadow:    0 0 3px rgba(0,0,0,0.3);
+            box-shadow:         0 0 3px rgba(0,0,0,0.3);
+        }
+
+        .ribbon-green:before, .ribbon-green:after {
+            content: "";
+            border-top:   3px solid #6e8900;
+            border-left:  3px solid transparent;
+            border-right: 3px solid transparent;
+            position:absolute;
+            bottom: -3px;
+        }
+
+        .ribbon-green:before {
+            left: 0;
+        }
+        .ribbon-green:after {
+            right: 0;
+        }
+        .data{
+            position: relative;
+        }
+
+        .data:hover:after{
+            content:attr(data-hover-response);
+            color: #0cf;
+            position: absolute;
+            left: 30px;
+            font-size: 12px;
+            top: -14px;
+        }
+        .data:active:after{
+            content:attr(data-active-response);
+            color: #f33;
+            position: absolute;
+            left: 30px;
+            font-size: 12px;
+            top: -14px;
+        }
+    </style>
 </head>
 <body>
+<h2>Demo1</h2>
+<div class="letter-line">
+    -----------<span>字符分割线</span>-----------
+</div>
 
+<h2>Demo2</h2>
+<div class="tag-line">单标签分隔线</div>
+
+<h2>Demo3</h2>
+<div class="bgc-line"><span>背景色分割线</span></div>
+
+<h2>Demo4</h2>
+<!--可多行-->
+<div class="inline-block-line">
+    <b></b><span>我是分隔线</span><b></b>
+</div>
+
+
+<h1>三角形</h1>
+<div class="arrow-up"></div>
+<div class="arrow-left"></div>
+<div class="arrow-down"></div>
+<div class="arrow-right"></div>
+
+<h2 data-text="我是渐变的文本">我是渐变的文本</h2>
+
+<p>css3的pointer-events能够禁用鼠标的点击事件,例: <a class="disabled" href="#">我是被禁用的链接</a></p>
+
+<h1>-webkit-自定义滚动条</h1>
+<pre><code>
+    ::-webkit-scrollbar {
+    width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: -webkit-linear-gradient(left, #547c90, #002640);
+    border: 1px solid #333;
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+    }
+</code></pre>
+
+<h1 class="blur">文本模糊</h1>
+
+<h1>圆角丝带效果</h1>
+<div class="wrapper">
+    <div class="ribbon-wrapper-green"><div class="ribbon-green">NEWS</div></div>
+</div>
+
+<h1>data属性</h1>
+<h3 class="data" data-hover-response="我说让你别点我" data-active-response="快闪开,我要爆炸了">别点我</h3>
 </body>
 </html>
