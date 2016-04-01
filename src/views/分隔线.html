@@ -84,6 +84,9 @@
             line-height: 0;
         }
 
+        h2:before{
+            content: '123';
+        }
         h2[data-text] {
             position: relative;
         }
@@ -250,5 +253,51 @@
 
 <h1>data属性</h1>
 <h3 class="data" data-hover-response="我说让你别点我" data-active-response="快闪开,我要爆炸了">别点我</h3>
+<style>
+    .box{
+        margin-top: 1000px;
+        width: 1000px;
+        height: 600px;
+        border: 1px solid red;
+    }
+
+    .box1{
+        display: inline-block;
+        width: 500px;
+        height: 100px;
+        border: 1px solid blue;
+        //vertical-align: top;
+    }
+    .box2{
+        display: inline-block;
+        width: 300px;
+        height: 100px;
+        border:1px solid yellow;
+        //vertical-align: top;
+    }
+
+</style>
+
+<div class="box">
+    <div class="box1">
+        <div class="box3">
+            aaaa
+        </div>
+    </div>
+    <div class="box2">
+
+    </div>
+    <p>
+        1.框内有文字和没文字的区别，高度伸展的方向是不一样的。
+        当有文字的时候，高度是向下扩展的，没文字的时候是向上扩展的。
+        ps：这里涉及了line-height，vertical-align，height等
+        相关属性，我的语文也不是特别好，所以也组织不上来，就只能这
+        么简单讲一下而已。</p>
+    <p>
+        2.因为框的高度都一样，所以设置一下vertical-align就可以让3个
+        框都在同一水平上，top,bottom,middle 都可以，高度不一样的时
+        候就会有区别了。
+    </p>
+</div>
 </body>
 </html>

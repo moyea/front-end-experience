@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video demo</title>
+</head>
+<body>
+<div>
+    <header></header>
+    <main>123</main>
+    <video src="http://yituitest.oss-cn-shanghai.aliyuncs.com/Apple%20%E6%96%B0%E6%AC%BE%20MacBook%20Pro%20%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E4%BB%8B%E7%BB%8D%20%EF%BC%88%E4%B8%AD%E6%96%87%EF%BC%89%20%20---%20%E7%A7%91%E6%8A%80%E5%B0%8F%E8%BE%9B_%E9%AB%98%E6%B8%85.mp4" controls></video>
+    <abbr title="tetet">123</abbr>
+    <p>说 <q>你好</q></p>
+
+    <style>
+        .question { color: blue }
+        #global { color: red }
+    </style>
+
+    <!-- stuff -->
+
+    <p class="question"><a href="#global">What are global attributes?</a></p>
+
+    <!-- more stuff -->
+
+    <p id="global">Attributes that can be used with all <abbr title="HyperText Markup Language">HTML</abbr> tags.</p>
+
+    <a id="user-content-what-does-it-do" class="anchor" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>
+    <canvas id="canvas" width="500" height="500">
+
+    </canvas>
+</div>
+<script>
+    var context=document.getElementById('canvas').getContext('2d');
+    var img=new Image();
+    img.src='200.png';
+    img.onload= function () {
+        context.drawImage(img,0,0);
+    }
+</script>
+</body>
+</html>
