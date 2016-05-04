@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    body {
+        font-family: "微软雅黑";
+    }
+    
+    .circle {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        border-radius: 50%;
+        background: #0cc;
+    }
+    
+    .pie_left,
+    .pie_right {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .left,
+    .right {
+        width: 200px;
+        height: 200px;
+        background: #00aacc;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .pie_right,
+    .right {
+        clip: rect(0, auto, auto, 100px);
+    }
+    
+    .pie_left,
+    .left {
+        clip: rect(0, 100px, auto, 0);
+    }
+    
+    .mask {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        left: 25px;
+        top: 25px;
+        background: #FFF;
+        position: absolute;
+        text-align: center;
+        line-height: 150px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #00aacc;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="circle" style="left:0">
+        <div class="pie_left">
+            <div class="left"></div>
+        </div>
+        <div class="pie_right">
+            <div class="right"></div>
+        </div>
+        <div class="mask"><span>0</span>%</div>
+    </div>
+</body>
+<script type="text/javascript">
+//addPercent(30);
+function addPercent(num) {
+    if (num > 100) return;
+    var c = document.getElementsByClassName("circle")[0];
+    c.getElementsByTagName("span")[0].innerHTML = num;
+    num = num * 3.6;
+    if (num <= 180) {
+        c.getElementsByClassName("right")[0].style.transform = "rotate(" + num + "deg)";
+    } else {
+        c.getElementsByClassName("right")[0].style.transform = "rotate(180deg)";
+        c.getElementsByClassName("left")[0].style.transform = "rotate(" + (num - 180) + "deg)";
+    }
+
+}
+
+var count = 0;
+var t = setInterval(function() {
+    if (count > 100) {
+        clearInterval(t);
+    }
+    addPercent(++count);
+}, 200);
+</script>
+</html>

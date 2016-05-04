@@ -1,0 +1,9 @@
+input[type="number"] {
+  //解决input[type="number"]显示上下箭头
+  -moz-appearance: textfield; //firefox
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button { //chrome
+    -webkit-appearance: none !important;
+    appearance: none;
+  }
+}

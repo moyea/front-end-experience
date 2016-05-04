@@ -14,6 +14,10 @@ var flatten = require('gulp-flatten');
 var through = require('through2');
 
 var notify = require('gulp-notify');
+
+//图片压缩
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
 //babel 配置项
 var babelOptions={
     presets:['es2015','react'],
@@ -88,4 +92,15 @@ gulp.task('browser-sync', function () {
             baseDir:"./src/views"
         }
     });
+});
+
+gulp.task('min-img', function() {
+    return gulp.src('src/images/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngcrush()]
+        }))
+        .pipe(gulp.dest('./dest/images/'))
+        .pipe(notify({ message: 'img task ok' }));
 });
