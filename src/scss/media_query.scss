@@ -1,6 +1,6 @@
 @import "lib/media_queries";
 
-@include custom-device(500px,1000px){
+@include screen(500px,1000px){
   body{
     background-color: #fff;
   }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html几种空白表示符</title>
+</head>
+<body>
+<h2>HTML空白表示符 <strong>nbsp</strong> /<strong>ensp</strong>/
+    <strong>emsp</strong>的区别？
+</h2>
+<ul>
+    <li><strong>&amp;nbsp;</strong>
+        (Non-Breaking-SPace:半角的不断行的空白格)
+    </li>
+    <li><strong>&amp;ensp;</strong>半角的空格(1个字符宽度)</li>
+    <li><strong>&amp;emsp;</strong>全角的空格(2个字符宽度)</li>
+    <li><strong>&amp;thinsp;</strong>窄空白(小于1个字符宽度)</li>
+</ul>
+<h3>未添加任何样式表现形式如下：</h3>
+<div class="non-style">
+    <div><span>我们</span>(没有空格)</div>
+    <div><span>我&nbsp;们</span>(nbsp)</div>
+    <div><span>我&ensp;们</span>(ensp)</div>
+    <div><span>我&emsp;们</span>(emsp)</div>
+    <div><span>我&thinsp;们</span>(thinsp)</div>
+</div>
+
+
+</body>
+</html>

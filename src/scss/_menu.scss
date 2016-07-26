@@ -176,7 +176,7 @@ $transition-delay-step: 50;
   }
 }
 
-@include max-screen(767px){
+@include max-screen(767px) {
 
   $child-number: 7;
   $transition-delay-start: 100;

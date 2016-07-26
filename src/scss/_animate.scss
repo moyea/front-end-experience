@@ -1,0 +1,25 @@
+//由中间向两边延伸成一条线
+.line-center-sides{
+  position: relative;
+  &:before{
+    position: absolute;
+    top: auto;
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #4183C4;
+    content: '';
+    -webkit-transition: all 0.2s;
+    -webkit-backface-visibility: hidden;
+    transition: all 0.2s;
+    backface-visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+  }
+  &:hover:before{
+    background-color: #2C76BF;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
