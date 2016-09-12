@@ -4,7 +4,7 @@ function randomString(len) {
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var maxPos = chars.length;
     var randomStr = '';
-    for (i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
         randomStr += chars.charAt(Math.floor(Math.random() * maxPos));
     }
     return randomStr;
