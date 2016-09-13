@@ -1,7 +1,7 @@
 {
   "name": "front-end-experience",
   "version": "0.0.1",
-  "description":"Record some front-end-experience",
+  "description": "Record some front-end-experience",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -16,7 +16,10 @@
     "react-dom": "latest",
     "through2": "latest",
     "gulp-notify": "latest",
-    "gulp-notify": "latest",
     "socket.io": "latest"
+  },
+  "devDependencies": {
+    "gulp.spritesmith": "^6.2.1",
+    "imagemin-pngcrush": "latest"
   }
 }
