@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var PubSub = (function () {
+        function PubSub() {
+            this.handlers={};
+        }
+
+        PubSub.prototype.emit = function (evt) {
+            var _self = this;
+            var args = Array.prototype.slice.call(arguments, 1);
+            for (var i = 0; i < _self.handlers[evt].length; i++) {
+                _self.handlers[evt][i].apply(_self, args);
+            }
+            return _self;
+        };
+        PubSub.prototype.on = function (evt, handler) {
+            var _self = this;
+            if (!(evt in _self.handlers)) {
+                _self.handlers[evt] = [];
+            }
+            _self.handlers[evt].push(handler);
+            return this;
+        };
+        return PubSub;
+    })();
+
+    var p = new PubSub();
+
+    p.on('status.change', function (statusCode) {
+        console.log('listener1:' + statusCode);
+    });
+
+    p.on('status.change', function (statusCode) {
+        console.log('listener2:' + statusCode);
+    });
+
+    p.emit('status.change', 2);
+
+
+</script>
+</body>
+</html>
