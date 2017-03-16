@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>canvas保存为图片</title>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<button id="redo">撤销</button>
+
+<img src="" alt="" id="img">
+
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/html2canvas/0.4.1/html2canvas.js"></script>
+<script>
+    let canvas = document.querySelector("#canvas");
+    let context = canvas.getContext("2d");
+    let resetBtn = document.querySelector("#redo");
+    let eles = [];
+    let ctx = context;
+
+    ctx.strokeStyle = "rgb(0,0,0)";
+    ctx.arc(50, 50, 30, 0, 2 * Math.PI, true);
+    ctx.closePath();
+    ctx.stroke();
+
+    canvas.ondragover = function (ev) {
+        ev.preventDefault();
+    };
+    canvas.ondrop = function (e) {
+        e.preventDefault();
+        let files = e.dataTransfer.files;
+        for (let file of files) {
+            console.log(file);
+            canvas.emit('load-file', file);
+            if (!isImage(file))return;
+
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                let img = new Image();
+                img.src = this.result;
+                img.onload = function () {
+                    let cW = canvas.offsetWidth;
+                    let sW = img.width;
+                    let w = img.width, h = img.height;
+                    if (sW > cW) {
+                        w = img.width = cW;
+                        h = img.height = img.height * cW / sW;
+                    }
+                    context.drawImage(img, 0, 0, w, h);
+                };
+                eles.push({
+                    id: 'ele0',
+                    posX: 0,
+                    posY: 0,
+                    width: 0,
+                    height: 0,
+                    zIndex: 0
+                });
+
+            };
+
+        }
+    };
+    canvas.handlers = {};
+    canvas.on = function (evt, handler) {
+        let _self = this;
+        if (!(evt in _self.handlers)) {
+            _self.handlers[evt] = [];
+        }
+        _self.handlers[evt].push(handler);
+        return this;
+    };
+    canvas.emit = function (evt, ...args) {
+        let _self = this;
+        for (let i = 0; i < _self.handlers[evt].length; i++) {
+            _self.handlers[evt][i].apply(_self, args);
+        }
+        return this;
+    };
+
+    resetBtn.onclick = function () {
+//        canvas.restore();
+    };
+
+    function isImage(file) {
+        return file.type.indexOf('image') != -1;
+    }
+    //    setTimeout(()=>{
+    html2canvas(canvas, {
+        onrendered: function (canvas) {
+            canvas.id = 'cvs';
+            canvas.style.display = 'none';
+//            canvas.style.zIndex = "-1";
+            document.body.appendChild(canvas);
+            console.log(canvas);
+            let cvs = document.getElementById('cvs');
+//                let imageData=cvs.getContext('2d').getImageData(0,0,cvs.width,cvs.height);
+            //转成图片,@param1：图片格式，@param2：图片质量 0(最低)-1(最高)
+            let dataUrl = cvs.toDataURL('image.png', 1);
+            console.log(dataUrl);
+            document.getElementById('img').src = dataUrl;
+        }
+    });
+    //    },400);
+
+
+</script>
+</body>
+</html>
